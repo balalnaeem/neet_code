@@ -42,3 +42,17 @@ p two_sum(nums, target)
 
 # This solution is brute force and takes a long time for bigger arrays
 # need to improve upon this.
+
+def two_sum_2(nums, target)
+  nums_idx_hash = {}
+  nums.each_with_index do |int, idx|
+    diff = target - int
+    return [nums_idx_hash[diff], idx] if nums_idx_hash.key?(diff)
+    nums_idx_hash[int] = idx
+  end
+end
+
+nums = [3,3]
+target = 6
+
+p two_sum_2(nums, target)
