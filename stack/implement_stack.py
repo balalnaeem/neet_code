@@ -11,16 +11,21 @@ empty()   - return True or False depending on if the stack is empty
 
 """
 
+from collections import deque
+
+
 class MyStack:
     def __init__(self):
-        self.stack = []
+        self.stack = deque()
         
     def push(self, x):
         self.stack.append(x)
         
     def pop(self):
-        return self.stack.pop()
-        
+        for _ in range(len(self.stack) -1):
+            self.push(self.stack.popleft())
+        return self.stack.popleft()
+
     def top(self):
         return self.stack[-1]
         
@@ -35,5 +40,6 @@ my_stack.push(2)
 top = my_stack.top()
 popped = my_stack.pop()
 empty = my_stack.empty()
+top = my_stack.top()
 
-print(top, popped, empty)
+print(top, popped, empty, top)
